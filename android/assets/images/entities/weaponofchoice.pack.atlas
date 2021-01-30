@@ -1,0 +1,41 @@
+
+weaponofchoice.pack.png
+size: 128,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Idle_Back
+  rotate: false
+  xy: 2, 2
+  size: 12, 16
+  orig: 12, 16
+  offset: 0, 0
+  index: -1
+Idle_Chest_Closed
+  rotate: false
+  xy: 16, 4
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+Idle_Chest_Open
+  rotate: false
+  xy: 32, 4
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+Idle_Front
+  rotate: false
+  xy: 48, 2
+  size: 12, 16
+  orig: 12, 16
+  offset: 0, 0
+  index: -1
+Idle_Side
+  rotate: false
+  xy: 62, 2
+  size: 10, 16
+  orig: 10, 16
+  offset: 0, 0
+  index: -1
