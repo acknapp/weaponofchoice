@@ -1,3 +1,5 @@
+import com.badlogic.gdx.tools.texturepacker.TexturePacker
+
 buildscript {
     repositories {
         mavenCentral()
@@ -6,6 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0'
         classpath 'org.robovm:robovm-gradle-plugin:1.8.0'
+        classpath "com.badlogicgames.gdx:gdx-tools:1.7.0"
     }
 }
 
@@ -100,6 +103,18 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
     }
+
+    task packTextures {
+        def inputDir = "$rootDir/core/rawAssets/sprites"
+        def outputDir = "$rootDir/android/assets/images"
+        inputs.dir inputDir
+        outputs.dir outputDir
+        doLast {
+            delete(outputDir)
+            TexturePacker.process(inputDir, outputDir, "weaponofchoice.pack")
+        }
+    }
+    project.tasks.compileJava.dependsOn packTextures
 }
 
 tasks.eclipse.doLast {
