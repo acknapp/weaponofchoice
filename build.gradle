@@ -113,7 +113,7 @@ project(":core") {
             // TODO: check the directory for each file that is being created first and if the file exists delete existing,
                 //but don't delete ones that don't exist
             delete(entityOutputDir)
-            TexturePacker.process(entityInputDir, entityOutputDir, "weaponofchoice.pack")
+            TexturePacker.process(entityInputDir, entityOutputDir, "weaponofchoice.entity.pack")
         }
     }
     project.tasks.compileJava.dependsOn packTextures
