@@ -107,13 +107,16 @@ project(":core") {
     task packTextures {
         def entityInputDir = "$rootDir/core/rawAssets/sprites/entities"
         def entityOutputDir = "$rootDir/android/assets/images/entities"
-        inputs.dir entityInputDir
-        outputs.dir entityOutputDir
+        def tilesInputDir = "$rootDir/core/rawAssets/sprites/tiles"
+        def tilesOutputDir = "$rootDir/android/assets/images/tiles"
         doLast {
             // TODO: check the directory for each file that is being created first and if the file exists delete existing,
                 //but don't delete ones that don't exist
             delete(entityOutputDir)
             TexturePacker.process(entityInputDir, entityOutputDir, "weaponofchoice.entity.pack")
+
+            delete(tilesOutputDir)
+            TexturePacker.process(tilesInputDir, tilesOutputDir, "weaponofchoice.tiles.pack")
         }
     }
     project.tasks.compileJava.dependsOn packTextures

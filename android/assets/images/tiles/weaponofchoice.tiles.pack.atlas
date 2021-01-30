@@ -1,0 +1,230 @@
+
+weaponofchoice.tiles.pack.png
+size: 512,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Grasstop
+  rotate: false
+  xy: 2, 4
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+LowerLeft
+  rotate: false
+  xy: 68, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+LowerRight
+  rotate: false
+  xy: 102, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+TopLeft
+  rotate: false
+  xy: 136, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+TopRight
+  rotate: false
+  xy: 170, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+WoCTR
+  rotate: false
+  xy: 204, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+WoClarge
+  rotate: false
+  xy: 238, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+axe
+  rotate: false
+  xy: 272, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+basetile
+  rotate: false
+  xy: 306, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+club
+  rotate: false
+  xy: 340, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+darkceiling
+  rotate: false
+  xy: 374, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+debris
+  rotate: false
+  xy: 408, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+debris2
+  rotate: false
+  xy: 442, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+debris3
+  rotate: false
+  xy: 476, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+debris4
+  rotate: false
+  xy: 36, 4
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+debris5
+  rotate: false
+  xy: 70, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+dirt2
+  rotate: false
+  xy: 104, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+dirt3
+  rotate: false
+  xy: 138, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+dirt4
+  rotate: false
+  xy: 172, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+dirt5
+  rotate: false
+  xy: 206, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+dirtbase
+  rotate: false
+  xy: 240, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+grassbottom
+  rotate: false
+  xy: 274, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+grassleft
+  rotate: false
+  xy: 308, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+grasslowerleft
+  rotate: false
+  xy: 342, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+grasslowerright
+  rotate: false
+  xy: 376, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+grassright
+  rotate: false
+  xy: 410, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+grasstopleft
+  rotate: false
+  xy: 444, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+grasstopright
+  rotate: false
+  xy: 478, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+newdoor
+  rotate: false
+  xy: 70, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+newwall
+  rotate: false
+  xy: 104, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+smolGrasstop
+  rotate: false
+  xy: 2, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sword
+  rotate: false
+  xy: 138, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
