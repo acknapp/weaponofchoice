@@ -5,10 +5,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.weaponofchoice.game.util.Constants;
+import com.weaponofchoice.game.util.MusicSingleton;
 
 public class WeaponOfChoice extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
+	public MusicSingleton music;
 	
 	@Override
 	public void create () {
@@ -18,6 +21,9 @@ public class WeaponOfChoice extends ApplicationAdapter {
 
 	@Override
 	public void render () {
+		music = new MusicSingleton(Constants.MUSIC);
+		music.setSongVolume(0.3f);
+		music.playSong();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
