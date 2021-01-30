@@ -13,4 +13,9 @@ public class Enums {
         NOT_WALKING,
         WALKING
     }
+
+    public enum OpenState {
+        OPEN,
+        CLOSED
+    }
 }
