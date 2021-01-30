@@ -60,6 +60,10 @@ public class WeaponOfChoice extends ApplicationAdapter {
 	@Override
 	public void render () {
 	    // Sound loading
+		// TODO: Set audio sampling and integration with streaming (Ideally we need it to be 44.1khz, 16 bit):
+			//https://github.com/libgdx/libgdx/wiki/Streaming-music
+			//https://github.com/libgdx/libgdx/wiki/Playing-pcm-audio
+			//https://libgdx.badlogicgames.com/ci/nightlies/docs/api/
         if (Gdx.input.isKeyJustPressed(Input.Keys.TAB)) {
         	if(music != null) {
 				music.disposeSong();
