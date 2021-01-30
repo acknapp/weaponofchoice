@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="1">
+ <tileset firstgid="1" source="Dungeon_Tileset.tsx"/>
+ <layer id="1" name="regions" width="8" height="8">
+  <data encoding="csv">
+168,0,168,168,0,168,168,0,
+168,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+168,0,0,0,0,0,0,0,
+168,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="input_wall" width="8" height="8">
+  <data encoding="csv">
+5,0,2684354581,2684354565,0,1610612741,1610612757,0,
+21,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+3221225493,0,0,0,0,0,0,0,
+3221225477,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="output_wall" width="8" height="8">
+  <data encoding="csv">
+5,0,2684354581,2684354565,0,1610612741,1610612757,0,
+21,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+3221225493,0,0,0,0,0,0,0,
+3221225477,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="4" name="output_collision" width="8" height="8">
+  <data encoding="csv">
+168,0,168,168,0,168,168,0,
+168,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+168,0,0,0,0,0,0,0,
+168,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>
