@@ -60,7 +60,7 @@
  <objectgroup id="6" name="GameObjects">
   <object id="1" name="StartingPoint" x="385.333" y="288" width="64" height="64"/>
  </objectgroup>
- <layer id="7" name="collision" width="32" height="24" visible="0">
+ <layer id="7" name="collision" width="32" height="24">
   <data encoding="csv">
 0,0,168,168,168,168,168,168,168,168,168,168,168,168,168,0,0,168,168,168,168,168,168,168,168,168,168,168,168,168,0,0,
 0,0,168,168,168,168,168,168,168,168,168,168,168,168,168,0,0,168,168,168,168,168,168,168,168,168,168,168,168,168,0,0,
