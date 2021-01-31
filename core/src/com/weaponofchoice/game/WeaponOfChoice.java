@@ -28,7 +28,7 @@ public class WeaponOfChoice extends ApplicationAdapter {
     // TODO 2: player movement smoothing and animation
 	// TODO 3: enemy spawning
 	// TODO 4: fix music optimization
-    // TODO 5: have WASD as an option for character movement
+    // TODO 5: Add song looping
 
     private SpriteBatch spriteBatch;
     private Texture texture;
@@ -42,7 +42,6 @@ public class WeaponOfChoice extends ApplicationAdapter {
 
 	private OrthographicCamera camera;
 	private Viewport viewport;
-	private SpriteBatch batch;
 
 	private Array<String> musicFiles;
 	private MusicSingleton music;
@@ -59,11 +58,11 @@ public class WeaponOfChoice extends ApplicationAdapter {
 
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(width, height, camera);
-		batch = new SpriteBatch();
+		spriteBatch = new SpriteBatch();
 
 		loader = new TmxMapLoader();
 		tiledMap = loader.load(Constants.LEVEL_MAP);
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, batch);
+		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, spriteBatch);
 
 		camera.setToOrtho(false, width, height);
 		camera.update();
@@ -77,11 +76,17 @@ public class WeaponOfChoice extends ApplicationAdapter {
 
 		musicFiles = getMusicFiles();
 		musicfileIndex = 0;
+
+
 	}
 
 	@Override
 	public void dispose() {
 		tiledMap.dispose();
+		spriteBatch.dispose();
+		if (music != null) {
+			music.disposeSong();
+		}
 	}
 
 	@Override
