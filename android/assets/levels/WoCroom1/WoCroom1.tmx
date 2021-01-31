@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="31">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="40">
  <tileset firstgid="1" source="SpriteV6.tsx"/>
  <tileset firstgid="321" source="Chest_Open_Anim.tsx"/>
  <layer id="1" name="ground" width="32" height="24">
@@ -43,7 +43,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,263,264,265,0,0,0,94,95,96,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,263,264,265,0,0,0,110,111,112,0,0,0,0,0,0,0,0,0,
+0,0,0,321,0,0,0,0,0,0,0,0,0,0,263,264,265,0,0,0,110,111,112,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,279,280,281,0,0,0,126,127,128,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -64,6 +64,13 @@
     <property name="heSaid" value="Whasuuuuuuup!"/>
    </properties>
   </object>
+  <object id="31" name="westDoor" x="962.105" y="352.632" width="26.3158" height="29.4737"/>
+  <object id="32" name="northDoor" x="478.947" y="36.8421" width="30.5263" height="25.2632"/>
+  <object id="35" name="westDoor" x="36.8421" y="547.368" width="24.2105" height="27.3684"/>
+  <object id="36" name="southDoor" x="480" y="707.368" width="30.5263" height="23.1579"/>
+  <object id="37" name="superSecretAnnoyingChest" x="94.7368" y="352.632" width="32.6316" height="31.5789"/>
+  <object id="38" name="chest1" x="290.526" y="193.684" width="26.3158" height="28.4211"/>
+  <object id="39" name="chest2" x="675.789" y="576.842" width="25.2632" height="29.4737"/>
  </objectgroup>
  <layer id="2" name="wall" width="32" height="24">
   <data encoding="csv">
@@ -178,5 +185,7 @@
   <object id="28" x="682.105" y="548.421" width="11.5789" height="21.0526"/>
   <object id="29" x="680" y="355.789" width="12.6316" height="24.2105"/>
   <object id="30" x="682.105" y="164.211" width="12.6316" height="23.1579"/>
+  <object id="33" x="36.8421" y="475.789" width="25.2632" height="68.4211"/>
+  <object id="34" x="4.21053" y="522.105" width="38.9474" height="21.0526"/>
  </objectgroup>
 </map>
