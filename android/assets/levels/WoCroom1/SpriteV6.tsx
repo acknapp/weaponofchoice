@@ -25,22 +25,6 @@
    <frame tileid="130" duration="100"/>
   </animation>
  </tile>
- <tile id="151">
-  <animation>
-   <frame tileid="151" duration="600"/>
-   <frame tileid="152" duration="600"/>
-   <frame tileid="168" duration="600"/>
-   <frame tileid="167" duration="600"/>
-  </animation>
- </tile>
- <tile id="152">
-  <animation>
-   <frame tileid="152" duration="650"/>
-   <frame tileid="168" duration="650"/>
-   <frame tileid="167" duration="650"/>
-   <frame tileid="151" duration="650"/>
-  </animation>
- </tile>
  <tile id="153">
   <animation>
    <frame tileid="153" duration="300"/>
@@ -51,22 +35,6 @@
   <animation>
    <frame tileid="154" duration="300"/>
    <frame tileid="153" duration="300"/>
-  </animation>
- </tile>
- <tile id="167">
-  <animation>
-   <frame tileid="167" duration="750"/>
-   <frame tileid="151" duration="750"/>
-   <frame tileid="152" duration="750"/>
-   <frame tileid="168" duration="750"/>
-  </animation>
- </tile>
- <tile id="168">
-  <animation>
-   <frame tileid="168" duration="700"/>
-   <frame tileid="167" duration="700"/>
-   <frame tileid="151" duration="700"/>
-   <frame tileid="152" duration="700"/>
   </animation>
  </tile>
  <tile id="169">
