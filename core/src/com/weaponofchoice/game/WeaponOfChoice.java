@@ -16,10 +16,11 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.Timer.Task;
 
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -53,9 +54,11 @@ public class WeaponOfChoice extends ApplicationAdapter {
 
 	private Texture enemyStartingTexture;
 	private Sprite enemy;
-    private Timer enemyTimer;
-    private Task enemyTimerTask;
     private float elapsedTime = 0;
+   	private boolean enemyRespawn;
+   	private Array<Vector2> enemySpawnPositions;
+	private SpriteBatch enemySpriteBatch;
+	private DelayedRemovalArray<Sprite> enemies;
 
     private TmxMapLoader loader;
 	private TiledMap  tiledMap;
@@ -68,6 +71,7 @@ public class WeaponOfChoice extends ApplicationAdapter {
 	private Array<String> musicFiles;
 	private MusicSingleton music;
 	private int musicfileIndex;
+
 
 	@Override
 	public void create () {
@@ -98,10 +102,9 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		player = new Sprite(startingPlayerTexture);
 
 		enemyStartingTexture = new Texture(Gdx.files.internal(Constants.ENEMY_STARTING_SPRITE));
-		enemy = new Sprite(enemyStartingTexture);
-		enemyTimer = new Timer();
-//		enemyTimer.in
-		enemyTimer.start();
+		enemySpawnPositions = generateEnemySpawnPoints();
+		enemySpriteBatch = new SpriteBatch();
+		enemies = new DelayedRemovalArray<Sprite>();
 
 		// Set music
 		musicFiles = getMusicFiles();
@@ -112,6 +115,32 @@ public class WeaponOfChoice extends ApplicationAdapter {
 
 		processMapMetadata();
 		player.setPosition(158.947f, 126.316f); // TODO: get start position from tmx file
+	}
+
+	private Array<Vector2> generateEnemySpawnPoints() {
+		// TODO: Change this to the doors for enemy spawn points
+		Array<Vector2> retval = new Array<Vector2>();
+		float middleWidth =  350.2f; // Gdx.graphics.getWidth() / 2;
+		float middleheight = 350.1f; // Gdx.graphics.getHeight() / 2;
+
+		Vector2 topSpawnLoc = new Vector2();
+		float topSpawnLocY = 358.9f; // Gdx.graphics.getHeight() - 32;
+		topSpawnLoc.set(middleWidth, topSpawnLocY);
+		retval.add(topSpawnLoc);
+
+		Vector2 bottomSpawnLoc = new Vector2();
+		float bottomSpawnLocY = 126.316f; // Gdx.graphics.getHeight() + 32;
+		bottomSpawnLoc.set(middleWidth, bottomSpawnLocY);
+		retval.add(bottomSpawnLoc);
+
+		Vector2 eastSpawnLoc = new Vector2();
+		float eastSpawnLocX = 458.1f; // Gdx.graphics.getWidth() - 32;
+		bottomSpawnLoc.set(eastSpawnLocX, middleheight);
+		retval.add(eastSpawnLoc);
+
+		// TODO: West spawn location
+
+		return retval;
 	}
 
 	@Override
@@ -160,10 +189,20 @@ public class WeaponOfChoice extends ApplicationAdapter {
 	@Override
 	public void render () {
 		elapsedTime += Gdx.graphics.getDeltaTime();
-		float whatModTimeIsIt = elapsedTime / 10;
-		if (elapsedTime % 10 == 1) {
-			Gdx.app.log(TAG, "10 seconds have elapsed");
+		float everyTwenty = elapsedTime / 10 % 2; // Is this milliseconds or seconds?
+		if (everyTwenty >= 1) {
+			enemyRespawn = true;
+			// TODO: Find doors
+			int randSpawnLocIndex = MathUtils.random(0, enemySpawnPositions.size - 1);
+
+			Sprite newEnemy = new Sprite(enemyStartingTexture);
+			Vector2 enemySpawnLoc = enemySpawnPositions.get(randSpawnLocIndex);
+			newEnemy.setPosition(enemySpawnLoc.x, enemySpawnLoc.y);
+			enemies.add(newEnemy);
 		}
+
+		// TODO: Move enemy
+
 	    // Sound loading
 		// TODO: Set audio sampling and integration with streaming (Ideally we need it to be 44.1khz, 16 bit):
 			//https://github.com/libgdx/libgdx/wiki/Streaming-music
@@ -184,14 +223,8 @@ public class WeaponOfChoice extends ApplicationAdapter {
 			music.playSong();
 			musicfileIndex++;
 		}
-        /*
-		music = new MusicSingleton(Constants.MUSIC);
-		music.setSongVolume(0.4f);
-		music.playSong();
 
-         */
-
-        // Crude player movement
+        //TODO: Crude player movement, abstract into a player class
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP) || Gdx.input.isKeyJustPressed(Input.Keys.W)) {
         	float positionX = player.getX();
         	float positionY = player.getY();
@@ -222,6 +255,30 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		camera.update();
 		tiledMapRenderer.setView(camera);
 		tiledMapRenderer.render();
+
+		if(enemies.size > 0) {
+			enemySpriteBatch.setProjectionMatrix(camera.combined);
+		    for (Sprite enemy : enemies) {
+				enemySpriteBatch.begin();
+		    	// TODO: make enemy movement random and follow player if found
+		    	if (enemy.getX() + 10 <= Gdx.graphics.getWidth() - 32) {
+					enemy.setPosition(enemy.getX() - 10, enemy.getY());
+					enemy.draw(enemySpriteBatch);
+					continue;
+				} else if(enemy.getX() <= 32) {
+					enemy.setPosition(enemy.getX() + 10, enemy.getY());
+					enemy.draw(enemySpriteBatch);
+				} else if(enemy.getY() + 10 <= Gdx.graphics.getHeight() - 32) {
+					enemy.setPosition(enemy.getX(), enemy.getY() - 10);
+					enemy.draw(enemySpriteBatch);
+				} else if(enemy.getY() <= 32) {
+					enemy.setPosition(enemy.getX(), enemy.getY() + 10);
+					enemy.draw(enemySpriteBatch);
+				}
+				enemy.draw(enemySpriteBatch);
+				enemySpriteBatch.end();
+			}
+		}
 
 		playerSpriteBatch.setProjectionMatrix(camera.combined);
 		playerSpriteBatch.begin();
