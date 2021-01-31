@@ -26,30 +26,23 @@ import com.weaponofchoice.game.util.MusicSingleton;
 public class WeaponOfChoice extends ApplicationAdapter {
     public static final String TAG = WeaponOfChoice.class.getName();
 
-    private static final float SCALE = 0.2916f;
-    private static final int VIRTUAL_WIDTH = (int)(1024 * SCALE);
-    private static final int VIRTUAL_HEIGHT = (int)(768 * SCALE);
+    private SpriteBatch spriteBatch;
+    private Texture texture;
+    private Sprite player;
+    private Vector2 startPosition;
 
-    private static final float CAMERA_SPEED = 100.0f;
+    private TmxMapLoader loader;
+	private TiledMap  tiledMap;
+	private TiledMapRenderer tiledMapRenderer;
+	private float playerMovementSpeed = 10; // TODO: figure out how to make this smooth
 
-    SpriteBatch spriteBatch;
-    Texture texture;
-    Sprite player;
-    Vector2 startPosition;
-
-    TmxMapLoader loader;
-	TiledMap  tiledMap;
-	TiledMapRenderer tiledMapRenderer;
-
-	OrthographicCamera camera;
+	private OrthographicCamera camera;
 	private Viewport viewport;
 	private SpriteBatch batch;
 
-	private Vector2 direction;
-
-	Array<String> musicFiles;
-	MusicSingleton music;
-	int musicfileIndex;
+	private Array<String> musicFiles;
+	private MusicSingleton music;
+	private int musicfileIndex;
 
 	@Override
 	public void create () {
@@ -63,15 +56,13 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(width, height, camera);
 		batch = new SpriteBatch();
+
 		loader = new TmxMapLoader();
 		tiledMap = loader.load(Constants.LEVEL_MAP);
+		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, batch);
 
 		camera.setToOrtho(false, width, height);
 		camera.update();
-
-// 		tiledMap = new TmxMapLoader().load(Constants.LEVEL_MAP);
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, batch);
-		direction = new Vector2();
 
 		spriteBatch = new SpriteBatch();
 		texture = new Texture(Gdx.files.internal(Constants.PLAYER_STARTING_SPRITE)); //TODO: use the packed atlas
@@ -132,25 +123,25 @@ public class WeaponOfChoice extends ApplicationAdapter {
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
         	float positionX = player.getX();
         	float positionY = player.getY();
-        	player.setPosition(positionX, positionY + 10);
+        	player.setPosition(positionX, positionY + playerMovementSpeed);
 		}
 
 		if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
 			float positionX = player.getX();
 			float positionY = player.getY();
-			player.setPosition(positionX, positionY - 10);
+			player.setPosition(positionX, positionY - playerMovementSpeed);
 		}
 
 		if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
 			float positionX = player.getX();
 			float positionY = player.getY();
-			player.setPosition(positionX + 10, positionY);
+			player.setPosition(positionX + playerMovementSpeed, positionY);
 		}
 
 		if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
 			float positionX = player.getX();
 			float positionY = player.getY();
-			player.setPosition(positionX - 10, positionY);
+			player.setPosition(positionX - playerMovementSpeed, positionY);
 		}
 
 		Gdx.gl.glClearColor(0, 0, 0, 1);
