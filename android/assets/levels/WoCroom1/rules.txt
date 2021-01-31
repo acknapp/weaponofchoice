@@ -1,1 +1,2 @@
 collision1.tmx
+ground1.tmx
