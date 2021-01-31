@@ -13,6 +13,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 import com.weaponofchoice.game.util.Constants;
@@ -24,6 +25,7 @@ public class WeaponOfChoice extends ApplicationAdapter {
     SpriteBatch spriteBatch;
     Texture texture;
     Sprite sprite;
+    Vector2 startPosition;
 
 	TiledMap  tiledMap;
 	TiledMapRenderer tiledMapRenderer;
@@ -32,10 +34,10 @@ public class WeaponOfChoice extends ApplicationAdapter {
 	Array<String> musicFiles;
 	MusicSingleton music;
 	int musicfileIndex;
-	
+
 	@Override
 	public void create () {
-//		float width = Gdx.graphics.getWidth(); // TODO: find out how to load 1024 x 768
+//		float width = Gdx.graphics.getWidth(); // TODO: find out how to resize the application to 1024 x 768
 //		float height = Gdx.graphics.getHeight();
 		float width = 1024.0f;
 		float height = 768.0f;
@@ -52,7 +54,8 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		spriteBatch = new SpriteBatch();
 		texture = new Texture(Gdx.files.internal("images/prepacked/Idle_Front.png")); //TODO: use the packed atlas
 		sprite = new Sprite(texture);
-		sprite.setPosition(Gdx.graphics.getWidth() / 2.0f, Gdx.graphics.getHeight() / 2.0f); // TODO: get start position from tmx file
+		Object whatIsThis = tiledMap.getProperties().get("PlayerStart"); //TODO how to get this?
+		sprite.setPosition(158.947f, 126.316f); // TODO: get start position from tmx file
 
 		musicFiles = getMusicFiles();
 		musicfileIndex = 0;
