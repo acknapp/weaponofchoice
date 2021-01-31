@@ -58,7 +58,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="6" name="StartingObjects" visible="0">
+ <objectgroup id="6" name="StartingObjects">
   <object id="1" name="PlayerStart" x="161.053" y="129.474" width="64" height="64">
    <properties>
     <property name="heSaid" value="Whasuuuuuuup!"/>
@@ -69,7 +69,7 @@
   <object id="35" name="westDoor" x="36.8421" y="547.368" width="24.2105" height="27.3684"/>
   <object id="36" name="southDoor" x="480" y="707.368" width="30.5263" height="23.1579"/>
   <object id="37" name="superSecretAnnoyingChest" x="94.7368" y="352.632" width="32.6316" height="31.5789"/>
-  <object id="38" name="chest1" x="290.526" y="193.684" width="26.3158" height="28.4211"/>
+  <object id="38" name="chest1" x="480.926" y="162.484" width="26.3158" height="28.4211"/>
   <object id="39" name="chest2" x="675.789" y="576.842" width="25.2632" height="29.4737"/>
  </objectgroup>
  <layer id="2" name="wall" width="32" height="24">
