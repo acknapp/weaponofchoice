@@ -27,8 +27,8 @@ public class WeaponOfChoice extends ApplicationAdapter {
     // TODO 1: collision identification and detection
     // TODO 2: player movement smoothing and animation
 	// TODO 3: enemy spawning
-    // TODO 4: fix package crash when rotating music
-	// TODO 5: fix music optimization
+	// TODO 4: fix music optimization
+    // TODO 5: have WASD as an option for character movement
 
     private SpriteBatch spriteBatch;
     private Texture texture;
@@ -148,25 +148,25 @@ public class WeaponOfChoice extends ApplicationAdapter {
          */
 
         // Crude player movement
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP) || Gdx.input.isKeyJustPressed(Input.Keys.W)) {
         	float positionX = player.getX();
         	float positionY = player.getY();
         	player.setPosition(positionX, positionY + playerMovementSpeed);
 		}
 
-		if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+		if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) || Gdx.input.isKeyJustPressed(Input.Keys.S)) {
 			float positionX = player.getX();
 			float positionY = player.getY();
 			player.setPosition(positionX, positionY - playerMovementSpeed);
 		}
 
-		if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+		if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) || Gdx.input.isKeyJustPressed(Input.Keys.D)) {
 			float positionX = player.getX();
 			float positionY = player.getY();
 			player.setPosition(positionX + playerMovementSpeed, positionY);
 		}
 
-		if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+		if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT) || Gdx.input.isKeyJustPressed(Input.Keys.A)) {
 			float positionX = player.getX();
 			float positionY = player.getY();
 			player.setPosition(positionX - playerMovementSpeed, positionY);
