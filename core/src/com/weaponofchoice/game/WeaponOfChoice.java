@@ -6,6 +6,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -18,11 +21,15 @@ import com.weaponofchoice.game.util.MusicSingleton;
 public class WeaponOfChoice extends ApplicationAdapter {
     public static final String TAG = WeaponOfChoice.class.getName();
 
-	TiledMap  tiledMap;
-	OrthographicCamera camera;
-	TiledMapRenderer tiledMapRenderer;
-	Array<String> musicFiles;
+    SpriteBatch spriteBatch;
+    Texture texture;
+    Sprite sprite;
 
+	TiledMap  tiledMap;
+	TiledMapRenderer tiledMapRenderer;
+	OrthographicCamera camera;
+
+	Array<String> musicFiles;
 	MusicSingleton music;
 	int musicfileIndex;
 	
@@ -38,8 +45,15 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, width, height);
 		camera.update();
+
 		tiledMap = new TmxMapLoader().load(Constants.LEVEL_MAP);
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+
+		spriteBatch = new SpriteBatch();
+		texture = new Texture(Gdx.files.internal("images/prepacked/Idle_Front.png"));
+		sprite = new Sprite(texture);
+		sprite.setPosition(Gdx.graphics.getWidth() / 2.0f, Gdx.graphics.getHeight() / 2.0f);
+
 		musicFiles = getMusicFiles();
 		musicfileIndex = 0;
 	}
@@ -85,10 +99,9 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		camera.update();
 		tiledMapRenderer.setView(camera);
 		tiledMapRenderer.render();
-/*
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
- */
+
+		spriteBatch.begin();
+		sprite.draw(spriteBatch);
+		spriteBatch.end();
 	}
 }
