@@ -37,7 +37,7 @@
 0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="output_collisionObjects">
+ <objectgroup id="4" name="output_objectCollision">
   <object id="1" name="collide" x="0" y="0" width="32" height="32"/>
  </objectgroup>
 </map>
