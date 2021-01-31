@@ -50,9 +50,9 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 
 		spriteBatch = new SpriteBatch();
-		texture = new Texture(Gdx.files.internal("images/prepacked/Idle_Front.png"));
+		texture = new Texture(Gdx.files.internal("images/prepacked/Idle_Front.png")); //TODO: use the packed atlas
 		sprite = new Sprite(texture);
-		sprite.setPosition(Gdx.graphics.getWidth() / 2.0f, Gdx.graphics.getHeight() / 2.0f);
+		sprite.setPosition(Gdx.graphics.getWidth() / 2.0f, Gdx.graphics.getHeight() / 2.0f); // TODO: get start position from tmx file
 
 		musicFiles = getMusicFiles();
 		musicfileIndex = 0;
@@ -100,6 +100,7 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		tiledMapRenderer.setView(camera);
 		tiledMapRenderer.render();
 
+		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
 		sprite.draw(spriteBatch);
 		spriteBatch.end();
