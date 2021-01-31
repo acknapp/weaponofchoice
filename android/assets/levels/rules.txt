@@ -1,2 +1,3 @@
 ground1.tmx
 collision1.tmx
+collision2.tmx
