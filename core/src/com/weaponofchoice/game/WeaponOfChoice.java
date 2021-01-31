@@ -257,27 +257,30 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		tiledMapRenderer.render();
 
 		if(enemies.size > 0) {
+			// TODO: fix enemy movement and spawning
 			enemySpriteBatch.setProjectionMatrix(camera.combined);
-		    for (Sprite enemy : enemies) {
-				enemySpriteBatch.begin();
-		    	// TODO: make enemy movement random and follow player if found
-		    	if (enemy.getX() + 10 <= Gdx.graphics.getWidth() - 32) {
-					enemy.setPosition(enemy.getX() - 10, enemy.getY());
-					enemy.draw(enemySpriteBatch);
-					continue;
-				} else if(enemy.getX() <= 32) {
-					enemy.setPosition(enemy.getX() + 10, enemy.getY());
-					enemy.draw(enemySpriteBatch);
-				} else if(enemy.getY() + 10 <= Gdx.graphics.getHeight() - 32) {
-					enemy.setPosition(enemy.getX(), enemy.getY() - 10);
-					enemy.draw(enemySpriteBatch);
-				} else if(enemy.getY() <= 32) {
-					enemy.setPosition(enemy.getX(), enemy.getY() + 10);
+			enemySpriteBatch.begin();
+			if(enemyRespawn == true) {
+				for (Sprite enemy : enemies) {
+					// TODO: make enemy movement random and follow player if found
+					if (enemy.getX() + 10 <= Gdx.graphics.getWidth() - 32) {
+						enemy.setPosition(enemy.getX() - 10, enemy.getY());
+						enemy.draw(enemySpriteBatch);
+					} else if (enemy.getX() <= 32) {
+						enemy.setPosition(enemy.getX() + 10, enemy.getY());
+						enemy.draw(enemySpriteBatch);
+					} else if (enemy.getY() + 10 <= Gdx.graphics.getHeight() - 32) {
+						enemy.setPosition(enemy.getX(), enemy.getY() - 10);
+						enemy.draw(enemySpriteBatch);
+					} else if (enemy.getY() <= 32) {
+						enemy.setPosition(enemy.getX(), enemy.getY() + 10);
+						enemy.draw(enemySpriteBatch);
+					}
 					enemy.draw(enemySpriteBatch);
 				}
-				enemy.draw(enemySpriteBatch);
-				enemySpriteBatch.end();
+				enemyRespawn = false;
 			}
+			enemySpriteBatch.end();
 		}
 
 		playerSpriteBatch.setProjectionMatrix(camera.combined);

@@ -332,14 +332,14 @@ Club_Walk_Back
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 4
+  index: 1
 Club_Walk_Back
   rotate: false
   xy: 122, 2
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 1
+  index: 4
 Idle_Club_Back
   rotate: false
   xy: 122, 2
@@ -689,14 +689,14 @@ Walk_Back
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 1
+  index: 4
 Walk_Back
   rotate: false
   xy: 174, 2
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 4
+  index: 1
 Idle_Front
   rotate: false
   xy: 208, 36
@@ -717,14 +717,14 @@ Walk_Front
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 4
+  index: 1
 Walk_Front
   rotate: false
   xy: 208, 36
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 1
+  index: 4
 Idle_Side
   rotate: false
   xy: 344, 2
@@ -787,14 +787,14 @@ Sword_Walk_Front
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 1
+  index: 4
 Sword_Walk_Front
   rotate: false
   xy: 276, 104
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 4
+  index: 1
 Idle_Sword_Side
   rotate: false
   xy: 378, 36
