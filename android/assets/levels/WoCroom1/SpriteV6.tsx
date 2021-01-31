@@ -3,7 +3,7 @@
  <image source="../../images/prepacked/SpriteV6.png" width="512" height="640"/>
  <tile id="33">
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0" y="0" width="32" height="32"/>
+   <object id="1" name="collide" x="0" y="0" width="32" height="32"/>
   </objectgroup>
  </tile>
  <tile id="128">
