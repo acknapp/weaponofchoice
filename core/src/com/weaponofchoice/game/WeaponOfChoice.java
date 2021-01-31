@@ -3,7 +3,6 @@ package com.weaponofchoice.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -15,7 +14,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -25,6 +23,12 @@ import com.weaponofchoice.game.util.MusicSingleton;
 
 public class WeaponOfChoice extends ApplicationAdapter {
     public static final String TAG = WeaponOfChoice.class.getName();
+
+    // TODO 1: collision identification and detection
+    // TODO 2: player movement smoothing and animation
+	// TODO 3: enemy spawning
+    // TODO 4: fix package crash when rotating music
+	// TODO 5: fix music optimization
 
     private SpriteBatch spriteBatch;
     private Texture texture;
@@ -70,6 +74,7 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		Object whatIsThis = tiledMap.getProperties().get("PlayerStart"); //TODO how to get this?
 		player.setPosition(158.947f, 126.316f); // TODO: get start position from tmx file
 
+
 		musicFiles = getMusicFiles();
 		musicfileIndex = 0;
 	}
@@ -87,13 +92,29 @@ public class WeaponOfChoice extends ApplicationAdapter {
 	private Array<String> getMusicFiles() {
 		/**
 		 * Get all the music files from the assets folder
+		 * Dynamic but it doesn't work for packaged distributions
 		 */
 		Array<String> retval = new Array<String>();
-		FileHandle dirHandle;
-		dirHandle = Gdx.files.internal("music");
+		// FileHandle dirHandle = Gdx.files.internal("music/");
+		String[] allMusicFiles = {
+				"music/GGJAM - ACTION 1.mp3",
+				"music/GGJAM - AMBIENT 1.mp3",
+				"music/GGJAM - CHILL 1.mp3",
+				"music/GGJAM - CHILL_EPIC THEME IDEA 2 1.mp3",
+				"music/GGJAM - CHILL_EPIC THEME IDEA 2.mp3",
+				"music/GGJAM - DRONE 1.mp3",
+				"music/GGJAM - DRONE THEME.mp3",
+				"music/GGJAM - RETRO MESS.mp3",
+				"music/Groove idea.mp3"
+		};
+		for(String entry: allMusicFiles) {
+			retval.add(entry);
+		}
+		/*
 		for(FileHandle entry: dirHandle.list()) {
 			retval.add(entry.path());
 		}
+		 */
 		return retval;
 	}
 
@@ -104,11 +125,11 @@ public class WeaponOfChoice extends ApplicationAdapter {
 			//https://github.com/libgdx/libgdx/wiki/Streaming-music
 			//https://github.com/libgdx/libgdx/wiki/Playing-pcm-audio
 			//https://libgdx.badlogicgames.com/ci/nightlies/docs/api/
+        	// or maybe need to use SongListenser? (See Libgdx cookbook)
         if (Gdx.input.isKeyJustPressed(Input.Keys.TAB)) {
         	if(music != null) {
 				music.disposeSong();
 			}
-			musicfileIndex++;
 			if (musicfileIndex >= musicFiles.size) {
 				musicfileIndex = 0;
 			}
@@ -117,7 +138,14 @@ public class WeaponOfChoice extends ApplicationAdapter {
 			music = new MusicSingleton(song);
 			music.setSongVolume(0.4f);
 			music.playSong();
+			musicfileIndex++;
 		}
+        /*
+		music = new MusicSingleton(Constants.MUSIC);
+		music.setSongVolume(0.4f);
+		music.playSong();
+
+         */
 
         // Crude player movement
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
