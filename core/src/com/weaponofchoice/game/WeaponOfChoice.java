@@ -3,6 +3,7 @@ package com.weaponofchoice.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -14,22 +15,37 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.weaponofchoice.game.util.Constants;
 import com.weaponofchoice.game.util.MusicSingleton;
 
 public class WeaponOfChoice extends ApplicationAdapter {
     public static final String TAG = WeaponOfChoice.class.getName();
 
+    private static final float SCALE = 0.2916f;
+    private static final int VIRTUAL_WIDTH = (int)(1024 * SCALE);
+    private static final int VIRTUAL_HEIGHT = (int)(768 * SCALE);
+
+    private static final float CAMERA_SPEED = 100.0f;
+
     SpriteBatch spriteBatch;
     Texture texture;
-    Sprite sprite;
+    Sprite player;
     Vector2 startPosition;
 
+    TmxMapLoader loader;
 	TiledMap  tiledMap;
 	TiledMapRenderer tiledMapRenderer;
+
 	OrthographicCamera camera;
+	private Viewport viewport;
+	private SpriteBatch batch;
+
+	private Vector2 direction;
 
 	Array<String> musicFiles;
 	MusicSingleton music;
@@ -45,20 +61,36 @@ public class WeaponOfChoice extends ApplicationAdapter {
 // 		Gdx.app.log(TAG, "Height: " + String.valueOf(height)); // DEBUG
 
 		camera = new OrthographicCamera();
+		viewport = new FitViewport(width, height, camera);
+		batch = new SpriteBatch();
+		loader = new TmxMapLoader();
+		tiledMap = loader.load(Constants.LEVEL_MAP);
+
 		camera.setToOrtho(false, width, height);
 		camera.update();
 
-		tiledMap = new TmxMapLoader().load(Constants.LEVEL_MAP);
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+// 		tiledMap = new TmxMapLoader().load(Constants.LEVEL_MAP);
+		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, batch);
+		direction = new Vector2();
 
 		spriteBatch = new SpriteBatch();
-		texture = new Texture(Gdx.files.internal("images/prepacked/Idle_Front.png")); //TODO: use the packed atlas
-		sprite = new Sprite(texture);
+		texture = new Texture(Gdx.files.internal(Constants.PLAYER_STARTING_SPRITE)); //TODO: use the packed atlas
+		player = new Sprite(texture);
 		Object whatIsThis = tiledMap.getProperties().get("PlayerStart"); //TODO how to get this?
-		sprite.setPosition(158.947f, 126.316f); // TODO: get start position from tmx file
+		player.setPosition(158.947f, 126.316f); // TODO: get start position from tmx file
 
 		musicFiles = getMusicFiles();
 		musicfileIndex = 0;
+	}
+
+	@Override
+	public void dispose() {
+		tiledMap.dispose();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+	    viewport.update(width, height);
 	}
 
 	private Array<String> getMusicFiles() {
@@ -92,11 +124,36 @@ public class WeaponOfChoice extends ApplicationAdapter {
 			String song = musicFiles.get(musicfileIndex);
 			Gdx.app.log(TAG, "Playing song: " + song);
 			music = new MusicSingleton(song);
-			music.setSongVolume(0.2f);
+			music.setSongVolume(0.4f);
 			music.playSong();
 		}
 
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+        // Crude player movement
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+        	float positionX = player.getX();
+        	float positionY = player.getY();
+        	player.setPosition(positionX, positionY + 10);
+		}
+
+		if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+			float positionX = player.getX();
+			float positionY = player.getY();
+			player.setPosition(positionX, positionY - 10);
+		}
+
+		if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+			float positionX = player.getX();
+			float positionY = player.getY();
+			player.setPosition(positionX + 10, positionY);
+		}
+
+		if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+			float positionX = player.getX();
+			float positionY = player.getY();
+			player.setPosition(positionX - 10, positionY);
+		}
+
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		camera.update();
@@ -105,7 +162,7 @@ public class WeaponOfChoice extends ApplicationAdapter {
 
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
-		sprite.draw(spriteBatch);
+		player.draw(spriteBatch);
 		spriteBatch.end();
 	}
 }
