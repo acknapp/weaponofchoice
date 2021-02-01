@@ -640,14 +640,14 @@ Walk_Slime
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 3
+  index: 1
 Walk_Slime
   rotate: false
   xy: 138, 172
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 1
+  index: 3
 Death_Slime
   rotate: false
   xy: 172, 206
@@ -766,14 +766,14 @@ Sword_Walk_Back
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 1
+  index: 4
 Sword_Walk_Back
   rotate: false
   xy: 242, 70
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 4
+  index: 1
 Idle_Sword_Front
   rotate: false
   xy: 276, 104
@@ -787,14 +787,14 @@ Sword_Walk_Front
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 1
+  index: 4
 Sword_Walk_Front
   rotate: false
   xy: 276, 104
   size: 24, 32
   orig: 24, 32
   offset: 0, 0
-  index: 4
+  index: 1
 Idle_Sword_Side
   rotate: false
   xy: 378, 36
@@ -808,14 +808,14 @@ Sword_Walk_Left
   size: 20, 32
   orig: 20, 32
   offset: 0, 0
-  index: 4
+  index: 1
 Sword_Walk_Left
   rotate: false
   xy: 378, 36
   size: 20, 32
   orig: 20, 32
   offset: 0, 0
-  index: 1
+  index: 4
 Player_ItemFind
   rotate: false
   xy: 310, 138

@@ -110,7 +110,7 @@ public class WeaponOfChoice extends ApplicationAdapter {
 		musicFiles = getMusicFiles();
 		musicfileIndex = 0;
 		music = new MusicSingleton(Constants.MUSIC);
-		music.setSongVolume(0.4f);
+		music.setSongVolume(5.9f);
 		music.playSong();
 
 		processMapMetadata();
