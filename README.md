@@ -1,5 +1,5 @@
 # Weapon Of Choice
-A 2021 Global Game Jam game.
+A 2021 Global Game Jam game.  Made with Libgdx.
 
 ## Code Requirements
 * Java 8 (or equivalent)
