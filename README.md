@@ -3,7 +3,7 @@
 * Made with [Libgdx](https://libgdx.badlogicgames.com/)
 
 ### GamePlay
-A player starts in a room that contains multiple of chests.  They have short amount
+A player starts in a room that contains multiple chests.  They have short amount
 of time to find a weapon that is in one of the chests, before monsters start entering the room.
 The player must use the weapon (once found) to defeat the monsters to win the level.
 
