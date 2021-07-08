@@ -1,6 +1,6 @@
 # Weapon Of Choice
 * A [2021 Global Game Jam game](https://globalgamejam.org/2021/games/weapon-choice-5).
-* Made with [Libgdx](https://libgdx.badlogicgames.com/)
+* Made with [Libgdx](https://libgdx.com/)
 
 ### GamePlay
 A player starts in a room that contains multiple chests.  They have a short amount
