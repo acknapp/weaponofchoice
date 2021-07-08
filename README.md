@@ -8,7 +8,7 @@ of time to find a weapon that is in one of the chests before monsters start ente
 The player must use the weapon (once found) to defeat the monsters to win the level.
 
 ### Code Requirements
-* [Java 8+](https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html)
+* [Java 8+](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=hotspot)
 
 ### Build Desktop Mode
 From a command line in the root directory run:
